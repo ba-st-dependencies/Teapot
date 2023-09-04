@@ -24,15 +24,18 @@ TeaPlaceholder class >> createPlaceholderName: key typeConstraint: aTypeConstrai
 
 { #category : #'instance creation' }
 TeaPlaceholder class >> fromString: aString atLast: aBoolean [
+
 	| spec typeConstraint key |
 	self mustBeValidPlaceholder: aString.
 	spec := aString allButFirst allButLast findTokens: ':'.
 	key := spec first.
 	typeConstraint := spec at: 2 ifAbsent: #IsObject.
-	^ self 
-		createPlaceholderName: key 
-		typeConstraint: (LanguagePlatform current globalNamed: typeConstraint asSymbol)
-		atLast: aBoolean
+	^ self
+		  createPlaceholderName: key
+		  typeConstraint: (LanguagePlatform current
+				   globalNamed: typeConstraint asSymbol
+				   ifAbsent: [ self error: 'Invalid type constraint' ])
+		  atLast: aBoolean
 ]
 
 { #category : #private }

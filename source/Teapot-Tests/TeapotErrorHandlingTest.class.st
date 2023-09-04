@@ -20,11 +20,11 @@ TeapotErrorHandlingTest >> setUp [
 		GET: '/zerodiv' -> [ 1 / 0 ];
 		GET: '/sub' -> [ #() at: 123 ];			
 		GET: '/domain' -> [ DomainError signal ];
-		GET: '/nonbool' -> [ AssertionFailed signal ];
+		GET: '/nonbool' -> [ MessageNotUnderstood signal ];
 		GET: '/keynotfound' -> [ KeyNotFound signal ];
 		exception: ZeroDivide -> [ :ex :req | 'zerodiv handled' ];
 		exception: SubscriptOutOfBounds, DomainError -> (Send message: #handleError:request: to: self);
-		exception: AssertionFailed -> (ZnResponse ok: (ZnStringEntity text: 'nonbool handled'));
+		exception: MessageNotUnderstood -> (ZnResponse ok: (ZnStringEntity text: 'nonbool handled'));
 		exception: KeyNotFound -> 42;
 		output: [ :resp :req | ZnResponse ok: (ZnStringEntity text: resp body printStringRoman) ];
 		start		

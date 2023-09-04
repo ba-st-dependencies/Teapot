@@ -31,7 +31,7 @@ TeaGlobUrlPattern class >> createSegment: aString atLast: aBoolean [
 TeaGlobUrlPattern class >> parseSegments: aString [
 	| tokens |
 	tokens := aString findTokens: '/'.
-	^ tokens collectWithIndex: [ :each :idx | 
+	^ tokens withIndexCollect: [ :each :idx | 
 		self createSegment: each atLast: idx = tokens size ]
 ]
 
