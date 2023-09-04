@@ -17,11 +17,3 @@ TeaStaticRouter >> handleRequest: aZnRequest ifUnhandled: aBlock [
 	response := delegate handleRequest: aZnRequest.
 	^ response isNotFound ifTrue: aBlock ifFalse: [ response ]
 ]
-
-{ #category : #acccessing }
-TeaStaticRouter >> urlPrefix: urlPrefixString path: pathString [
-	delegate ifNil: [ delegate := ZnStaticFileServerDelegate new ].
-	delegate
-		prefixFromString: urlPrefixString;
-		directory: pathString asFileReference.
-]

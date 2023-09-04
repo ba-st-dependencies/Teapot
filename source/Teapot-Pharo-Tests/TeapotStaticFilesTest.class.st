@@ -5,7 +5,7 @@ Class {
 		'server',
 		'htdocs'
 	],
-	#category : #'Teapot-Tests'
+	#category : #'Teapot-Pharo-Tests'
 }
 
 { #category : #private }
