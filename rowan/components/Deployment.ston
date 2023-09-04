@@ -9,6 +9,7 @@ RwSimpleProjectLoadComponentV2 {
     'Teapot-Core',
     'Teapot-Extensions',
     'Teapot-GS64-Extensions',
+    'Teapot-Regex-Extensions',
     'Teapot-Zinc-Extensions'
   ],
   #conditionalPackageMapSpecs : {
@@ -16,8 +17,9 @@ RwSimpleProjectLoadComponentV2 {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'Teapot-Core' : { 'symbolDictName' : 'TeapotGS' },
-          'Teapot-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
           'Teapot-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Teapot-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Teapot-Regex-Extensions' : { 'symbolDictName' : 'Regex' },
           'Teapot-Zinc-Extensions' : { 'symbolDictName' : 'Zinc' }
         }
       }
