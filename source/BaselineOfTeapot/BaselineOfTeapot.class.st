@@ -12,7 +12,7 @@ BaselineOfTeapot >> baseline: spec [
 		self setUpDependencies: spec.
 
 		spec
-			package: 'Teapot-Core' with: [ spec requires: #( 'NeoJSON' ) ];
+			package: 'Teapot-Core' with: [ spec requires: #( 'NeoJSON' 'Buoy-Deployment' ) ];
 			package: 'Teapot-Extensions'
 			with: [ spec requires: 'Teapot-Core' ];
 			package: 'Teapot-Zinc-Extensions'
@@ -62,5 +62,8 @@ BaselineOfTeapot >> setUpDependencies: spec [
 				loads: #( 'core' )
 			];
 		baseline: 'ZincHTTPComponents' with: [ spec repository: 'github://svenvc/zinc' ];
-		project: 'Zinc-Zodiac' copyFrom: 'ZincHTTPComponents' with: [ spec loads: 'Zinc-Zodiac-Core' ]
+		project: 'Zinc-Zodiac' copyFrom: 'ZincHTTPComponents' with: [ spec loads: 'Zinc-Zodiac-Core' ].
+	spec
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v7' ];
+		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ]
 ]
