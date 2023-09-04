@@ -8,7 +8,7 @@ Class {
 		'regexp',
 		'lock'
 	],
-	#category : #'Teapot-Pharo-Extensions'
+	#category : #'Teapot-Core'
 }
 
 { #category : #'instance creation' }

@@ -1,6 +1,6 @@
 Extension { #name : #RxMatcher }
 
-{ #category : #'*Teapot-Pharo-Extensions' }
+{ #category : #'*Teapot-Regex-Extensions' }
 RxMatcher >> asTeaUrlPattern [
 	^ TeaRxUrlPattern fromRxMatcher: self
 ]
