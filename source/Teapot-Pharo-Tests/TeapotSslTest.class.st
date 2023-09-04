@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'teapot'
 	],
-	#category : #'Teapot-Tests'
+	#category : #'Teapot-Pharo-Tests'
 }
 
 { #category : #private }
