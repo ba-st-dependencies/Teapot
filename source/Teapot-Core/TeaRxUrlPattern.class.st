@@ -30,14 +30,14 @@ TeaRxUrlPattern >> initializeRxMatcher: aRxMatcher [
 ]
 
 { #category : #'url matcher' }
-TeaRxUrlPattern >> matchesUrl: aZnUrl placeholders: aDictionary [ 
-	| match |
-	match := self hasMatched: aZnUrl.
-	match ifTrue:
-		[ 2 to: regexp subexpressionCount do: [ :i | 
-			aDictionary at: i - 1put: (regexp subexpression: i) ] ].
-	^ match
+TeaRxUrlPattern >> matchesUrl: aZnUrl placeholders: aDictionary [
 
+	| match |
+
+	match := self hasMatched: aZnUrl.
+	match ifTrue: [
+		2 to: regexp subexpressionCount do: [ :i | aDictionary at: i - 1 put: ( regexp subexpression: i ) ] ].
+	^ match
 ]
 
 { #category : #printing }
