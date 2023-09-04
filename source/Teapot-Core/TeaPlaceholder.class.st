@@ -31,7 +31,7 @@ TeaPlaceholder class >> fromString: aString atLast: aBoolean [
 	typeConstraint := spec at: 2 ifAbsent: #IsObject.
 	^ self 
 		createPlaceholderName: key 
-		typeConstraint: (Smalltalk at: typeConstraint asSymbol)
+		typeConstraint: (LanguagePlatform current globalNamed: typeConstraint asSymbol)
 		atLast: aBoolean
 ]
 
