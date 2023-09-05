@@ -9,12 +9,17 @@ Class {
 
 { #category : #running }
 TeapotFormatTest >> setUp [
+
 	server := Teapot on
-		GET: '/a' -> [ 4 ]; output: [ :resp :req | ZnResponse ok: (ZnStringEntity text: resp body printStringRoman) ];
-		GET: 'default' -> 'any';
-		GET: '/plain' -> 'any'; output: #text;
-		GET: 'xml' -> 'any'; output: (TeaOutput stringWithContentType: ZnMimeType applicationXml);
-		start		
+		          GET: '/a' -> [ 4 ];
+		          output: [ :resp :req |
+			          ZnResponse ok: ( ZnStringEntity text: ( resp body + 1 ) printString ) ];
+		          GET: 'default' -> 'any';
+		          GET: '/plain' -> 'any';
+		          output: #text;
+		          GET: 'xml' -> 'any';
+		          output: ( TeaOutput stringWithContentType: ZnMimeType applicationXml );
+		          start
 ]
 
 { #category : #running }
@@ -31,7 +36,7 @@ TeapotFormatTest >> testArbitraryContentType [
 
 { #category : #tests }
 TeapotFormatTest >> testConverting [
-	self assert: (TeaTestClient httpGetString: '/a') equals: 'IV'.	
+	self assert: (TeaTestClient httpGetString: '/a') equals: '5'.	
 ]
 
 { #category : #tests }
