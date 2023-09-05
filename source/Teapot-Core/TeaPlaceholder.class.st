@@ -67,7 +67,7 @@ TeaPlaceholder >> printOn: aStream [
 
 { #category : #initialization }
 TeaPlaceholder >> setPlaceholderName: aString typeConstraint: aTypeConstraint [
-	placeholderName := aString asSymbol.
+	placeholderName := aString.
 	typeConstraint := aTypeConstraint.
 	^ self
 ]

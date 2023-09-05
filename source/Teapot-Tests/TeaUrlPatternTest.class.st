@@ -45,13 +45,13 @@ TeaUrlPatternTest >> testPlaceholderSubstitute [
 	| placeholders |
 	
 	placeholders := self pattern: '/<id>/a/b' matches: '/123/a/b'.
-	self assert: (placeholders at: #id) equals: '123'.
+	self assert: (placeholders at: 'id') equals: '123'.
 	
 	placeholders := self pattern: '/a/<id>/b' matches: '/a/25/b'.
-	self assert: (placeholders at: #id) equals: '25'.
+	self assert: (placeholders at: 'id') equals: '25'.
 	
 	placeholders := self pattern: '/a/b/<id>' matches: '/a/b/xyz'.	
-	self assert: (placeholders at: #id) equals: 'xyz'.		
+	self assert: (placeholders at: 'id') equals: 'xyz'.		
 
 ]
 
@@ -59,14 +59,14 @@ TeaUrlPatternTest >> testPlaceholderSubstitute [
 TeaUrlPatternTest >> testPlaceholderTypeMatch [
 	| placeholders |
 	placeholders := self pattern: '/<id:IsInteger>' matches: '/12'.
-	self assert: (placeholders at: #id) equals: 12.
+	self assert: (placeholders at: 'id') equals: 12.
 	
 	placeholders := self pattern: '/<id:IsInteger>/abc' matches: '/-34/abc'.
-	self assert: (placeholders at: #id) equals: -34.
+	self assert: (placeholders at: 'id') equals: -34.
 	
 	placeholders := self pattern: '/<float:IsNumber>/<int:IsNumber>' matches: '/3.14/3'.
-	self assert: (placeholders at: #float) equals: 3.14.
-	self assert: (placeholders at: #int) equals: 3.	
+	self assert: (placeholders at: 'float') equals: 3.14.
+	self assert: (placeholders at: 'int') equals: 3.	
 ]
 
 { #category : #tests }
