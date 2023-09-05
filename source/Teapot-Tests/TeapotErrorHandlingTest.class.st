@@ -16,23 +16,30 @@ TeapotErrorHandlingTest >> handleError: ex request: req [
 
 { #category : #running }
 TeapotErrorHandlingTest >> setUp [
+
+	super setUp.
 	server := Teapot on
-		GET: '/zerodiv' -> [ 1 / 0 ];
-		GET: '/sub' -> [ #() at: 123 ];			
-		GET: '/domain' -> [ -2 sqrt ];
-		GET: '/nonbool' -> [ NotYetImplemented signal ];
-		GET: '/keynotfound' -> [ KeyNotFound signal ];
-		exception: ZeroDivide -> [ :ex :req | 'zerodiv handled' ];
-		exception: SubscriptOutOfBounds, DomainError -> (Send message: #handleError:request: to: self);
-		exception: NotYetImplemented -> (ZnResponse ok: (ZnStringEntity text: 'nonbool handled'));
-		exception: KeyNotFound -> 42;
-		output: [ :resp :req | ZnResponse ok: (ZnStringEntity text: resp body printStringRoman) ];
-		start		
+		          GET: '/zerodiv' -> [ 1 / 0 ];
+		          GET: '/sub' -> [ #(  ) at: 123 ];
+		          GET: '/domain' -> [ DomainError signal ];
+		          GET: '/nonbool' -> [ MessageNotUnderstood signal ];
+		          GET: '/keynotfound' -> [ KeyNotFound signal ];
+		          exception: ZeroDivide -> [ :ex :req | 'zerodiv handled' ];
+		          exception:
+			          SubscriptOutOfBounds , DomainError -> ( Send message: #handleError:request: to: self );
+		          exception:
+			          MessageNotUnderstood -> ( ZnResponse ok: ( ZnStringEntity text: 'nonbool handled' ) );
+		          exception: KeyNotFound -> 42;
+		          output: [ :resp :req |
+			          ZnResponse ok: ( ZnStringEntity text: ( resp body + 1 ) printString ) ];
+		          start
 ]
 
 { #category : #running }
 TeapotErrorHandlingTest >> tearDown [
-	server stop
+
+	server stop.
+	super tearDown
 ]
 
 { #category : #tests }
@@ -48,7 +55,7 @@ TeapotErrorHandlingTest >> testHandlesOneException [
 
 { #category : #tests }
 TeapotErrorHandlingTest >> testTransformingErroHandlerResponse [
-	self assert: (TeaTestClient httpGetString: '/keynotfound') equals: 'XLII'.
+	self assert: (TeaTestClient httpGetString: '/keynotfound') equals: '43'.
 ]
 
 { #category : #tests }

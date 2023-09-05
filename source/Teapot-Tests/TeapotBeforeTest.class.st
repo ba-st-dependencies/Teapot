@@ -18,26 +18,33 @@ TeapotBeforeTest >> forbidden [
 
 { #category : #private }
 TeapotBeforeTest >> logRequest: aTeaRequest [
-	log add: (aTeaRequest at: #user)
+
+	log add: ( aTeaRequest at: 'user' )
 ]
 
 { #category : #running }
 TeapotBeforeTest >> setUp [
+
+	super setUp.
 	log := OrderedCollection new.
 	server := Teapot on
-		before: '/secure/*' -> [ :req | ((req at: #user) = 'admin' and: [ (req at: #pass) = '****' ]) 
-			ifFalse: [ req abort: self forbidden ] ];
-		before: '*' -> (Send message: #logRequest: to: self);
-		before: '*' -> 'any';
-		GET: '/secure' -> 'protected';
-		GET: '/secure/1/2/3' -> 'protected';
-		POST: '/public' -> 'public';
-		start		
+		          before: '/secure/*' -> [ :req |
+				          ( ( req at: 'user' ) = 'admin' and: [ ( req at: 'pass' ) = '****' ] ) ifFalse: [
+						          req abort: self forbidden ]
+				          ];
+		          before: '*' -> ( Send message: #logRequest: to: self );
+		          before: '*' -> 'any';
+		          GET: '/secure' -> 'protected';
+		          GET: '/secure/1/2/3' -> 'protected';
+		          POST: '/public' -> 'public';
+		          start
 ]
 
 { #category : #running }
 TeapotBeforeTest >> tearDown [
-	server stop
+
+	server stop.
+	super tearDown
 ]
 
 { #category : #tests }
@@ -58,5 +65,5 @@ TeapotBeforeTest >> testMultipleBeforeHandlers [
 	TeaTestClient httpGet: '/secure?user=user01&pass=****'. "403 before second filter"
 	TeaTestClient httpPost: '/public?user=pubuser'.		
 		
-	self assert: log asArray equals: #(admin admin pubuser).
+	self assert: log asArray equals: #('admin' 'admin' 'pubuser').
 ]

@@ -58,9 +58,12 @@ TeaCompositeRouter >> evaluateBeforeFilters: aZnRequest [
 
 { #category : #private }
 TeaCompositeRouter >> evaluateRouters: aZnRequest ifUnhandled: aBlock [
-	routers do: [ :each | | response |
-		response := each handleRequest: aZnRequest ifUnhandled: nil.
-		response ifNotNil: [ ^ response ] ].
+
+	routers do: [ :each |
+		| response |
+		response := each handleRequest: aZnRequest ifUnhandled: [ nil ].
+		response ifNotNil: [ ^ response ]
+		].
 	^ aBlock value
 ]
 

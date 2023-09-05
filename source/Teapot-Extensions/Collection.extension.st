@@ -1,6 +1,6 @@
 Extension { #name : #Collection }
 
-{ #category : #'*Teapot-Core' }
+{ #category : #'*Teapot-Extensions' }
 Collection >> asTeaUrlPattern [
 	^ TeaUrlPatternSet fromCollection: self
 ]

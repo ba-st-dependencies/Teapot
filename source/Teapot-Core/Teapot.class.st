@@ -202,11 +202,6 @@ Teapot >> responseTransformer: transformerBlockOrSymbol [
 		ifFalse: [ transformerBlockOrSymbol ]
 ]
 
-{ #category : #'url mapping' }
-Teapot >> serveStatic: urlPrefixString from: pathString [	
-	staticRouter urlPrefix: urlPrefixString path: pathString
-]
-
 { #category : #accessing }
 Teapot >> server [
 	^ server

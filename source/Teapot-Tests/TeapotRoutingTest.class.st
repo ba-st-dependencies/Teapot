@@ -36,12 +36,16 @@ TeapotRoutingTest >> test404 [
 
 { #category : #tests }
 TeapotRoutingTest >> test405 [
-	| response |
+
+	| response allowedMethods |
+
 	response := TeaTestClient httpDelete: '/a'.
 	self assert: response code equals: 405.
-	self 
-		assert: (', ' split: (response headers at: 'Allow')) asSet
-		equals: #(GET POST) asSet.
+	allowedMethods := ', ' split: ( response headers at: 'Allow' ).
+	self
+		assert: allowedMethods size equals: 2;
+		assert: ( allowedMethods includes: 'GET' );
+		assert: ( allowedMethods includes: 'POST' )
 ]
 
 { #category : #tests }

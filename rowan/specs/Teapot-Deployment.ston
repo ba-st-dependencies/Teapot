@@ -1,0 +1,9 @@
+RwLoadSpecificationV2 {
+  #specName: 'Teapot-CI',
+  #projectName : 'Teapot',
+  #diskUrl : 'Teapot',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Deployment'
+  ]
+}

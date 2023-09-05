@@ -1,0 +1,28 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Deployment',
+  #projectNames : [
+    'Zinc',
+    'Regex'
+  ],
+  #componentNames : [	],
+  #packageNames : [
+    'Teapot-Core',
+    'Teapot-Extensions',
+    'Teapot-GS64-Extensions',
+    'Teapot-Regex-Extensions',
+    'Teapot-Zinc-Extensions'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Teapot-Core' : { 'symbolDictName' : 'TeapotGS' },
+          'Teapot-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Teapot-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Teapot-Regex-Extensions' : { 'symbolDictName' : 'Regex' },
+          'Teapot-Zinc-Extensions' : { 'symbolDictName' : 'Zinc' }
+        }
+      }
+    }
+  }
+}

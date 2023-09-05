@@ -53,9 +53,11 @@ TeaOutput class >> mustacheHtml: templateString [
 
 { #category : #private }
 TeaOutput class >> optionalClass: aSymbol [
-	[ ^ Smalltalk at: aSymbol ]
-		on: KeyNotFound
-		do: [ self error: 'An optional dependency ', aSymbol, ' was not found. Please load it first.' ]
+
+	^ LanguagePlatform current globalNamed: aSymbol ifAbsent: [
+		  self error:
+			  ('An optional dependency <1s> was not found. Please load it first.'
+				   expandMacrosWith: aSymbol asString) ]
 ]
 
 { #category : #'response transformers' }

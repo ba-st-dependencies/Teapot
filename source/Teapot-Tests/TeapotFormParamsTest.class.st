@@ -9,15 +9,19 @@ Class {
 
 { #category : #running }
 TeapotFormParamsTest >> setUp [
+
+	super setUp.
 	server := Teapot on
-		POST: '/form' -> [ :req | (req at: #foo), '-', (req at: #bar) ];
-		exception: TeaNoSuchParam -> 'no such param';
-		start.
+		          POST: '/form' -> [ :req | ( req at: 'foo' ) , '-' , ( req at: 'bar' ) ];
+		          exception: TeaNoSuchParam -> 'no such param';
+		          start
 ]
 
 { #category : #running }
 TeapotFormParamsTest >> tearDown [
-	server stop
+
+	server stop.
+	super tearDown
 ]
 
 { #category : #tests }

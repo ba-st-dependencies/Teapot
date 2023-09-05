@@ -1,6 +1,6 @@
 Extension { #name : #String }
 
-{ #category : #'*Teapot-Core' }
+{ #category : #'*Teapot-Extensions' }
 String >> asTeaUrlPattern [
 	^ TeaGlobUrlPattern parseString: self
 ]
