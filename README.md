@@ -1,12 +1,14 @@
 # Teapot  
 
-Teapot is micro web framework for [Pharo Smalltalk](https://pharo.org) on top of
-the [Zinc HTTP components](https://github.com/svenvc/zinc), that focuses on
-simplicity and ease of use. It's around 600 lines of code, not counting the tests.
+A fork of JSON Web Token to be used as a dependency in [ba-st](https://githu.com/ba-st) for GS/64 & Pharo.
+
+The `upstream` branch is supposed to track the changes in the `master` branch of [zeroflag/Teapot](https://github.com/zeroflag/Teapot)
+
+The `release-candidate` is the branch where our changes land before releasing a version.
 
 [![Pharo - Unit Tests](https://github.com/ba-st-dependencies/Teapot/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st-dependencies/Teapot/actions/workflows/unit-tests.yml/badge.svg)
 [![GS64 - Unit Tests](https://github.com/ba-st-dependencies/Teapot/actions/workflows/unit-tests-gs64.yml/badge.svg)](https://github.com/ba-st-dependencies/Teapot/actions/workflows/unit-tests-gs64.yml)
-[![Coverage Status](https://codecov.io/github/ba-st-dependencies/Teapot/coverage.svg?branch=master)](https://codecov.io/gh/ba-st-dependencies/Teapot/branch/master)
+[![Coverage Status](https://codecov.io/github/ba-st-dependencies/Teapot/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st-dependencies/Teapot/branch/release-candidate)
 
 [![Baseline Groups](https://github.com/ba-st-dependencies/Teapot/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st-dependencies/Teapot/actions/workflows/loading-groups.yml)
 [![GS64 Components](https://github.com/ba-st-dependencies/Teapot/actions/workflows/loading-gs64-components.yml/badge.svg)](https://github.com/ba-st-dependencies/Teapot/actions/workflows/loading-gs64-components.yml)
@@ -18,6 +20,10 @@ simplicity and ease of use. It's around 600 lines of code, not counting the test
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
 
 [![GS64 3.6.6](https://img.shields.io/badge/GS64-3.6.6-informational)](https://gemtalksystems.com/products/gs64/)
+
+Teapot is micro web framework on top of
+the [Zinc HTTP components](https://github.com/svenvc/zinc), that focuses on
+simplicity and ease of use. It's around 600 lines of code, not counting the tests.
 
 > *Name origin*: [418 I'm a teapot](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 > (RFC 2324) is an HTTP status code.
