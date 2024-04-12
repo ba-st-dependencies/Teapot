@@ -3,7 +3,6 @@ on:
   - push
   - pull_request
   - workflow_dispatch
-
 jobs:
    build:
     runs-on: ubuntu-latest
@@ -30,3 +29,4 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           name: Unit-Tests-${{matrix.smalltalk}}
+          token: ${{ secrets.CODECOV_TOKEN }}
